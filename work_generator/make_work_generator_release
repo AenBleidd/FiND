@@ -1,0 +1,18 @@
+# generator source
+GENERATOR_SRC = work_generator.cpp
+
+#BOINC path
+BPATH = /home/oxis/workspace/cpp_project/boinc/source
+BLIB = $(BPATH)/lib
+BDB = $(BPATH)/db
+BSCHED = $(BPATH)/sched
+
+all: work_generator
+
+work_generator: $(GENERATOR_SRC)
+	g++ -g -O2 -I/usr/include/mysql -I$(BPATH) -I$(BLIB) -I$(BDB) -I$(BSCHED) \
+	-o work_generator $(GENERATOR_SRC) \
+	-lsched -lboinc -lboinc_crypt -lmysqlclient -lpthread -lz -lm -ldl -lssl -lcrypto
+
+clean:
+	rm -rf work_generator

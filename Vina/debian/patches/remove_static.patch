@@ -1,0 +1,17 @@
+Index: autodock-vina-1.1.2/build/linux/release/Makefile
+===================================================================
+--- autodock-vina-1.1.2.orig/build/linux/release/Makefile	2011-05-12 15:45:29.468086887 +0200
++++ autodock-vina-1.1.2/build/linux/release/Makefile	2011-05-12 15:45:54.876212739 +0200
+@@ -1,8 +1,8 @@
+-BASE=/usr/local
+-BOOST_VERSION=1_41
++BASE=/usr
++BOOST_VERSION=1_46
+ BOOST_INCLUDE = $(BASE)/include
+-C_PLATFORM=-static -pthread
+-GPP=/usr/local/bin/g++
++C_PLATFORM= -pthread
++GPP=g++
+ C_OPTIONS= -O3 -DNDEBUG
+ BOOST_LIB_VERSION=
+ 

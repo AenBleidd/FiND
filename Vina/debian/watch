@@ -1,0 +1,3 @@
+version=3
+opts="uversionmangle=s/_/./g" \
+    http://vina.scripps.edu/download.html download/autodock_vina_([\d._]+)\.tgz

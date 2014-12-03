@@ -1,0 +1,15 @@
+Contact: Oleg Trott <ot14@columbia.edu>
+Homepage: http://vina.scripps.edu
+Name: AutoDock Vina
+Reference:
+  author: Oleg Trott and Arthur J. Olson
+  title: >
+    AutoDock Vina: Improving the speed and accuracy of docking with a new scoring function, efficient optimization, and multithreading
+  journal: Journal of Computational Chemistry
+  volume: 31
+  number: 2
+  pages: 455-461
+  year: 2010
+  DOI: 10.1002/jcc.21334
+  URL: http://onlinelibrary.wiley.com/doi/10.1002/jcc.21334/abstract
+  eprint: http://onlinelibrary.wiley.com/doi/10.1002/jcc.21334/full
