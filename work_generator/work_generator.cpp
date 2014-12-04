@@ -113,7 +113,7 @@ int make_job(struct jobstruct job) {
 		/*sprintf(wu.name, "%s_%d_%f-%s-%s-%s-%s-%s-", app_name, getpid(),
 		 dtime(), job.idreceptor, job.namereceptor, job.idligand,
 		 job.nameligand, job.experiment);*/
-		sprintf(wu.name, "%s_%s_%s_%s", app_name, job.idreceptor, job.idligand,
+		sprintf(wu.name, "%s_%s_%s_%s", app_name, job.idligand, job.idreceptor,
 				job.experiment);
 	}
 

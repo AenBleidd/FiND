@@ -130,7 +130,8 @@ class PyAssimilator(Assimilator):
                     sqlList.append("INSERT INTO results VALUES (0, {0}, {1}, '{2}', {3}, '{4}', {5}, {6}, {7}, {8}, '{9}')".format(experiment, idreceptor, receptor, idligand, ligand, score, 0, 0, seed, rfile))
                     checked += 1
                     try:
-                        os.remove(self.path + rfile)
+                        #os.remove(self.path + rfile)
+                        shutil.move(self.path + rfile, self.pendingPath + rfile)
                     except Exception, e:
                         self.logCritical("Error: %s", e)
                         self.num_thread -= 1
@@ -151,6 +152,8 @@ class PyAssimilator(Assimilator):
             i += 1
             
         try:
+            while self.num_thread > 50:
+                time.sleep(3)
             conn = MySQLdb.connect(host, user, passwd, db)
             cursor = conn.cursor()
             
@@ -168,6 +171,12 @@ class PyAssimilator(Assimilator):
             return did_something
             
         # return did something result
+        for dfile in listing:
+            try:
+                os.remove(self.pendingPath + dfile)
+            except:
+                self.logCritical("File missing: %s", e)
+
         self.num_thread -= 1
         return did_something
 

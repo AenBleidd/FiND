@@ -218,6 +218,7 @@ void do_search(model& m, const boost::optional<model>& ref, const scoring_functi
         log.endl();
 
         result << seed << ","; //oxis
+        std::cerr << "\nSeed: " << seed << '\n';//oxis
 
         output_container out_cont;
         doing(verbosity, "Performing search", log);
@@ -259,6 +260,7 @@ void do_search(model& m, const boost::optional<model>& ref, const scoring_functi
         remarks.push_back(vina_seed_remark(seed));
 
         result << out_cont[0].e; // oxis
+        std::cerr << "\nScore: " << out_cont[0].e << '\n';//oxis
 
         VINA_FOR_IN(i, out_cont) {
             if(how_many >= num_modes || !not_max(out_cont[i].e) || out_cont[i].e > out_cont[0].e + energy_range) break; // check energy_range sanity FIXME

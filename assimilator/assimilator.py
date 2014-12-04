@@ -51,6 +51,7 @@ class Assimilator():
         self.sleep_interval = 10
         self.path = "/home/boinc/findah/assimilated/"
         self.failedPath = "/home/boinc/findah/failed/"
+        self.pendingPath = "/home/boinc/findah/pending/"
         self.num_thread = 0
         self.pass_modulo = 300
     
@@ -149,8 +150,7 @@ class Assimilator():
         Calls check_stop_trigger before doing any work.
         """
 
-        if not self.pass_count%self.pass_modulo:		
-            print self.num_thread
+        if not self.pass_count%self.pass_modulo:
             while self.num_thread > 0:
                 print "Wait"
                 time.sleep(1)
@@ -255,9 +255,11 @@ class Assimilator():
                 if arg[-1] == "/":
                     self.path = arg
                     self.failedPath = self.path.replace("assimilated", "failed")
+                    self.pendingPath = self.path.replace("assimilated", "pending")
                 else:
                     self.path = arg + "/"
                     self.failedPath = self.path.replace("assimilated", "failed")
+                    self.pendingPath = self.path.replace("assimilated", "pending")
             else:
                 self.logCritical("Unrecognized arg: %s\n", arg)
 
