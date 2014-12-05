@@ -1,6 +1,0 @@
-11:22:13 (9240): Can't open init data file - running in standalone mode
-
-Receptor name: pipi
-
-Ligand name: popo
-11:22:13 (9240): called boinc_finish(0)
