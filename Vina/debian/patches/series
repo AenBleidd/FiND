@@ -1,0 +1,4 @@
+remove_static.patch
+do_not_link_against_unneeded_libs.patch
+annoying_static_removed_was_in_for_a_reason_questionmark.patch
+fix_boost.patch

@@ -1,0 +1,75 @@
+.TH AUTODOCK "1" "November 2010" "AutoDock Vina 1.1.1 (Apr 20, 2010)"
+.SH NAME
+vina \- docking small molecules against proteins
+.SH DESCRIPTION
+.SS "Input:"
+.TP
+\fB\-\-receptor\fR arg
+rigid part of the receptor (PDBQT)
+.TP
+\fB\-\-flex\fR arg
+flexible side chains, if any (PDBQT)
+.TP
+\fB\-\-ligand\fR arg
+ligand (PDBQT)
+.SS "Search space (required):"
+.TP
+\fB\-\-center_x\fR arg
+X coordinate of the center
+.TP
+\fB\-\-center_y\fR arg
+Y coordinate of the center
+.TP
+\fB\-\-center_z\fR arg
+Z coordinate of the center
+.TP
+\fB\-\-size_x\fR arg
+size in the X dimension (Angstroms)
+.TP
+\fB\-\-size_y\fR arg
+size in the Y dimension (Angstroms)
+.TP
+\fB\-\-size_z\fR arg
+size in the Z dimension (Angstroms)
+.SS "Output (optional):"
+.TP
+\fB\-\-out\fR arg
+output models (PDBQT), the default is chosen based on
+the ligand file name
+.TP
+\fB\-\-log\fR arg
+optionally, write log file
+.SS "Misc (optional):"
+.TP
+\fB\-\-cpu\fR arg
+the number of CPUs to use (the default is to try to
+detect the number of CPUs or, failing that, use 1)
+.TP
+\fB\-\-seed\fR arg
+explicit random seed
+.TP
+\fB\-\-exhaustiveness\fR arg (=8) exhaustiveness of the global search (roughly
+proportional to time): 1+
+.TP
+\fB\-\-num_modes\fR arg (=9)
+maximum number of binding modes to generate
+.TP
+\fB\-\-energy_range\fR arg (=3)
+maximum energy difference between the best binding
+mode and the worst one displayed (kcal/mol)
+.SS "Configuration file (optional):"
+.TP
+\fB\-\-config\fR arg
+the above options can be put here
+.SS "Information (optional):"
+.TP
+\fB\-\-help\fR
+display usage summary
+.TP
+\fB\-\-help_advanced\fR
+display usage summary with advanced options
+.TP
+\fB\-\-version\fR
+display program version
+.SH "SEE ALSO"
+AutoDock Vina home page on http://vina.scripps.edu.

@@ -1,0 +1,25 @@
+#!/usr/bin/make -f
+# debian/rules for autodoc_vinna
+# Authors: Yask Gupta <yask.gupta87@gmail.com>, Andreas Tille <tille@debian.org>
+# License: GPL
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+CFLAGS+=-fpermissive -DBOOST_FILESYSTEM_VERSION=3 --lto
+CXXFLAGS+=-fpermissive -DBOOST_FILESYSTEM_VERSION=3 --lto
+LDFLAGS+=--lto
+
+%:
+	dh  $@
+
+override_dh_auto_build:
+	$(MAKE) BASE=/usr -C build/linux/release CLFAGS="$(CFLAGS)" CXXFLAGS="$(CXXFLAGS)" LDFLAGS="$(LDFLAGS)"
+
+override_dh_clean:
+	dh_clean
+	rm -f build/linux/release/*.o build/linux/release/vina*
+
+get-orig-source:
+	mkdir -p ../tarballs
+	uscan --verbose --force-download --destdir=../tarballs

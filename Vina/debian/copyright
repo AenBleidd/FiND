@@ -1,0 +1,32 @@
+Format: http://dep.debian.net/deps/dep5/
+Upstream-Name: AutoDock Vina
+Upstream-Contact: Oleg Trott <trott@scripps.edu>,
+		  Ruth Huey <rhuey@scripps.edu>
+Source: http://vina.scripps.edu/download.html
+
+Files: *
+Copyright: © 2006-2011, The Scripps Research Institute
+	     Oleg Trott <trott@scripps.edu>,
+	     Ruth Huey <rhuey@scripps.edu>
+License: Apache License, Version 2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+   http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ On Debian systems, the complete text of the Apache version 2.0 license
+ can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files: debian/*
+Copyright: © 2010 Yask Gupta <yask.gupta87@gmail.com>
+           © 2010-2011 Steffen Moeller <moeller@debian.org>
+           © 2011 Andreas Tille <tille@debian.org>
+License: Apache License, Version 2.0
+ Same license as program itself.

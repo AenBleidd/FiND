@@ -1,0 +1,15 @@
+autodock-vina for Debian
+------------------------
+
+No changes were done to upstream's source code,
+just the name of the base directory adjusted
+to the Debian policy.
+
+The build process was adjusted according to
+http://vina.scripps.edu/manual.html#build
+and an otherwise missing Makefile added to
+allow the direct application of cdbs.
+
+The man pages were created with help2man
+(also available as a Debian package) and
+are overdue to be manually improved.
