@@ -6,6 +6,7 @@ Generic Assimilator framework
 import os, re, signal, sys, time, hashlib
 import boinc_path_config
 from Boinc import database, boinc_db, boinc_project_path, configxml, sched_messages
+import shutil
 
 # Peter Norvig's Abstract base class hack
 def abstract():
@@ -287,7 +288,11 @@ class Assimilator():
             # main loop
             while(1):
                 database.connect()
+                if self.num_thread > 10:
+                    open("stop_working", 'a').close()
                 workdone = self.do_pass(app)
+                if self.num_thread < 10:
+                    os.remove("stop_working")
                 database.close()
                 if not workdone:
                     time.sleep(self.sleep_interval)

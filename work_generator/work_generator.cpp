@@ -286,12 +286,12 @@ int Connector::read_sql_config() {
 }
 void generator(Connector connect) {
 	int retval;
-	int cushion = 55000;
+	int cushion = 1000;
 	while (1) {
 		check_stop_daemons();
 		int n;
 		retval = count_unsent_results(n, 0);
-		if (n > cushion) {
+		if (n > cushion || fileExists("stop_working")) {
 			log_messages.printf(MSG_DEBUG, "N > cushion sleep n= %d\n", n);
 			log_messages.printf(MSG_DEBUG, "sleep cushion= %d\n", cushion);
 			sleep(100);
