@@ -127,7 +127,7 @@ class PyAssimilator(Assimilator):
                     idreceptor = "(SELECT idreceptors FROM {0}.receptors WHERE name='{1}')".format(db, receptor)
                     idligand = "(SELECT idligands FROM {0}.ligands WHERE name='{1}')".format(db, ligand)
                     
-                    sqlList.append("INSERT INTO results VALUES (0, {0}, {1}, '{2}', {3}, '{4}', {5}, {6}, {7}, {8}, '{9}')".format(experiment, idreceptor, receptor, idligand, ligand, score, 0, 0, seed, rfile))
+                    sqlList.append("INSERT INTO results VALUES (0, '{0}', {1}, '{2}', {3}, '{4}', {5}, {6}, {7}, {8}, '{9}')".format(experiment, idreceptor, receptor, idligand, ligand, score, 0, 0, seed, rfile))
                     checked += 1
                     try:
                         #os.remove(self.path + rfile)
