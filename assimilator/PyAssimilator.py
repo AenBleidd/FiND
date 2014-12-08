@@ -131,7 +131,9 @@ class PyAssimilator(Assimilator):
                     checked += 1
                     try:
                         #os.remove(self.path + rfile)
+                        toRemove = []
                         shutil.move(self.path + rfile, self.pendingPath + rfile)
+                        toRemove.append(rfile)
                     except Exception, e:
                         self.logCritical("Error: %s", e)
                         self.num_thread -= 1
@@ -171,7 +173,7 @@ class PyAssimilator(Assimilator):
             return did_something
             
         # return did something result
-        for dfile in listing:
+        for dfile in toRemove:
             try:
                 os.remove(self.pendingPath + dfile)
             except:
