@@ -153,7 +153,6 @@ class Assimilator():
 
         if not self.pass_count%self.pass_modulo:
             while self.num_thread > 0:
-                print "Wait"
                 time.sleep(1)
             self.logDebug("Uber assimilation: %s\n",  len(os.listdir(self.path)))
             self.do_assimilate(0, True)
@@ -291,7 +290,7 @@ class Assimilator():
                 if self.num_thread > 10:
                     open("stop_working", 'a').close()
                 workdone = self.do_pass(app)
-                if self.num_thread < 10:
+                if self.num_thread < 5:
                     os.remove("stop_working")
                 database.close()
                 if not workdone:
