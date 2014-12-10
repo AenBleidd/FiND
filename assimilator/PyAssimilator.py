@@ -109,6 +109,7 @@ class PyAssimilator(Assimilator):
             return did_something
         
         sqlList = []
+        toRemove = []
         
         if uber:
             maxBatch = len(listing)
@@ -131,7 +132,6 @@ class PyAssimilator(Assimilator):
                     checked += 1
                     try:
                         #os.remove(self.path + rfile)
-                        toRemove = []
                         shutil.move(self.path + rfile, self.pendingPath + rfile)
                         toRemove.append(rfile)
                     except Exception, e:

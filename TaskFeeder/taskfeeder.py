@@ -6,9 +6,9 @@ import getopt
 from time import sleep
 
 host = '127.0.0.1'
-user = ''
-passwd = ''
-db = ''
+user = 'boinc'
+passwd = 'boinc'
+db = 'fmah'
 
 # idreceptor idligand status experiment volume
 

@@ -284,9 +284,8 @@ int Connector::read_sql_config() {
 	cout << listCreds[0] << endl;
 	return 0;
 }
-void generator(Connector connect) {
+void generator(Connector connect, int cushion) {
 	int retval;
-	int cushion = 1000;
 	while (1) {
 		check_stop_daemons();
 		int n;
@@ -323,6 +322,8 @@ int main(int argc, char** argv) {
 	int i, retval;
 	char buff[256];
 
+	int cushion = 1000;
+
 	for (i = 1; i < argc; i++) {
 		if (is_arg(argv[i], "d")) {
 			if (!argv[++i]) {
@@ -346,6 +347,8 @@ int main(int argc, char** argv) {
 		} else if (is_arg(argv[i], "h") || is_arg(argv[i], "help")) {
 			usage(argv[0]);
 			exit(0);
+		} else if (!strcmp(argv[i], "--cushion")) {
+			cushion = atoi(argv[++i]);
 		} else if (is_arg(argv[i], "v") || is_arg(argv[i], "version")) {
 			printf("%s\n", SVN_VERSION);
 			exit(0);
@@ -395,5 +398,5 @@ int main(int argc, char** argv) {
 		exit(1);
 	}
 
-	generator(connect);
+	generator(connect, cushion);
 }

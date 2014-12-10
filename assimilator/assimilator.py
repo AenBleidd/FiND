@@ -291,7 +291,8 @@ class Assimilator():
                     open("stop_working", 'a').close()
                 workdone = self.do_pass(app)
                 if self.num_thread < 5:
-                    os.remove("stop_working")
+                    if os.path.isfile("stop_working"):
+                        os.remove("stop_working")
                 database.close()
                 if not workdone:
                     time.sleep(self.sleep_interval)
