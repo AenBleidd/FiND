@@ -164,9 +164,7 @@ class PyAssimilator(Assimilator):
             while self.num_thread > 50:
                 time.sleep(3)
             
-            if not self.conn.open:
-                self.conn = MySQLdb.connect(host, user, passwd, db)
-                self.conn.autocommit(True)
+            self.conn.ping(True)
             cursor = conn.cursor()
             
             for sql in sqlList:
