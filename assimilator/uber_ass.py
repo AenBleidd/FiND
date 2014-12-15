@@ -63,8 +63,9 @@ def do_assimilate(uber = False, path):
         
     try:
         conn = MySQLdb.connect(host, user, passwd, db)
+        self.conn.autocommit(True)
         cursor = conn.cursor()
-        
+
         for sql in sqlList:
             cursor.execute(sql)
             assimilated += 1
