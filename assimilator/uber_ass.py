@@ -82,7 +82,7 @@ def do_assimilate(path, uber = False):
     # return did something result
     for dfile in toRemove:
         try:
-            os.remove(self.pendingPath + dfile)
+            os.remove(path + dfile)
         except:
             print "File missing " + dfile
 
