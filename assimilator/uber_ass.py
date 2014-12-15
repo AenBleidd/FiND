@@ -63,18 +63,21 @@ def do_assimilate(uber = False, path):
         
     try:
         conn = MySQLdb.connect(host, user, passwd, db)
-        self.conn.autocommit(True)
+        conn.autocommit(True)
         cursor = conn.cursor()
+
+        total = len(sqlList)
 
         for sql in sqlList:
             cursor.execute(sql)
             assimilated += 1
+            print str(assimilated)+"/"+str(total)
         did_something = True
         conn.commit()
         cursor.close()
         conn.close()
     except Exception, e:
-        return "conn = MySQLdb.connect(host, user, passwd, db)"
+        return "conn = MySQLdb.connect(host, user, passwd, db)", e
         
     # return did something result
     for dfile in toRemove:
