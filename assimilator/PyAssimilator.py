@@ -160,7 +160,7 @@ class PyAssimilator(Assimilator):
                 time.sleep(3)
             
             self.conn.ping(True)
-            cursor = conn.cursor()
+            cursor = self.conn.cursor()
             
             for sql in sqlList:
                 cursor.execute(sql)
