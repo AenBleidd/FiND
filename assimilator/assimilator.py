@@ -61,7 +61,7 @@ class Assimilator():
         self.pendingPath = "/home/boinc/findah/pending/"
         self.num_thread = 0
         self.pass_modulo = 300
-        self.conn = MySQLdb.connect(host, user, passwd, db)
+        self.conn = None
         self.conn.autocommit(True)
     
     def check_stop_trigger(self):
@@ -300,6 +300,7 @@ class Assimilator():
         passwd = buff[2]
         db = buff[3]
     
+        self.conn = MySQLdb.connect(host, user, passwd, db)
         # retrieve app where name = app.name
         database.connect()
         app=database.Apps.find1(name=self.appname)
