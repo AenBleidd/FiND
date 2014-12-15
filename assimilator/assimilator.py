@@ -157,6 +157,8 @@ class Assimilator():
         #if not self.pass_count%self.pass_modulo:
             while self.num_thread > 0:
                 time.sleep(1)
+                if sefl.num_thread > 10:
+                    break
             self.logDebug("Uber assimilation: %s\n",  len(os.listdir(self.path)))
             self.do_assimilate(0, True)
 
