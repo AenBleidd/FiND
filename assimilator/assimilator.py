@@ -7,6 +7,12 @@ import os, re, signal, sys, time, hashlib
 import boinc_path_config
 from Boinc import database, boinc_db, boinc_project_path, configxml, sched_messages
 import shutil
+import MySQLdb
+
+host = ''
+user = ''
+passwd = ''
+db = ''
 
 # Peter Norvig's Abstract base class hack
 def abstract():
@@ -278,6 +284,22 @@ class Assimilator():
         self.parse_args(sys.argv[1:])
         self.config = configxml.default_config().config
 
+        try:
+            with open("/home/boinc/findah/bin/sql_config.conf", 'r') as sql_config:
+                buff = []
+                i = 0
+                for line in sql_config:
+                    if line[0] != "#":
+                         buff.append(line[:-1])
+                         i += 1
+        except Exception, e:
+            self.logCritical("Error: %s", e)
+            exit(1)
+        host = buff[0]
+        user = buff[1]
+        passwd = buff[2]
+        db = buff[3]
+    
         # retrieve app where name = app.name
         database.connect()
         app=database.Apps.find1(name=self.appname)

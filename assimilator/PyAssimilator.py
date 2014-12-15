@@ -8,11 +8,6 @@ from assimilator import *
 import os, sys, shutil
 from Crypto.Random.random import randint
 
-host = ''
-user = ''
-passwd = ''
-db = ''
-
 class PyAssimilator(Assimilator):
     """
     PyMW Assimilator. Copies workunit results to a predefined output directory. 
@@ -191,21 +186,6 @@ class PyAssimilator(Assimilator):
 
 # allow the module to be executed as an application
 if __name__ == '__main__':
-    try:
-        with open("/home/boinc/findah/bin/sql_config.conf", 'r') as sql_config:
-            buff = []
-            i = 0
-            for line in sql_config:
-                if line[0] != "#":
-                    buff.append(line[:-1])
-                    i += 1
-    except Exception, e:
-        self.logCritical("Error: %s", e)
-        exit(1)
-    host = buff[0]
-    user = buff[1]
-    passwd = buff[2]
-    db = buff[3]
 
     asm = PyAssimilator()
     asm.run()
