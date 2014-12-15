@@ -3,7 +3,7 @@
 import MySQLdb
 import os, sys, shutil
 
-def do_assimilate(uber = False, path):
+def do_assimilate(path, uber = False):
     """
     This method scans the database for workunits that need to be 
     assimilated. It handles all processing rules passed in on the command  
@@ -110,4 +110,4 @@ if __name__ == '__main__':
     if path[-1] != "/":
         path = path+"/"
     
-    print do_assimilate(0, True, path)
+    print do_assimilate(path, True)
