@@ -153,7 +153,8 @@ class Assimilator():
         Calls check_stop_trigger before doing any work.
         """
 
-        if not self.pass_count%self.pass_modulo:
+        if self.pass_count == 0:
+        #if not self.pass_count%self.pass_modulo:
             while self.num_thread > 0:
                 time.sleep(1)
             self.logDebug("Uber assimilation: %s\n",  len(os.listdir(self.path)))
