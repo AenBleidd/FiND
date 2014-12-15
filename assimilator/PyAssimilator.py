@@ -8,6 +8,11 @@ from assimilator import *
 import os, sys, shutil
 from Crypto.Random.random import randint
 
+host = ''
+user = ''
+passwd = ''
+db = ''
+
 class PyAssimilator(Assimilator):
     """
     PyMW Assimilator. Copies workunit results to a predefined output directory. 
@@ -158,7 +163,10 @@ class PyAssimilator(Assimilator):
         try:
             while self.num_thread > 50:
                 time.sleep(3)
-            conn = MySQLdb.connect(host, user, passwd, db)
+            
+            if not self.conn.open:
+                self.conn = MySQLdb.connect(host, user, passwd, db)
+                self.conn.autocommit(True)
             cursor = conn.cursor()
             
             for sql in sqlList:
@@ -168,7 +176,6 @@ class PyAssimilator(Assimilator):
             self.logDebug("%d results inserted into database, %d errors\n", assimilated, checked-assimilated)
             conn.commit()
             cursor.close()
-            conn.close()
         except Exception, e:
             self.logCritical("Error: %s", e)
             self.num_thread -= 1

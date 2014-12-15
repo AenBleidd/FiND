@@ -55,6 +55,8 @@ class Assimilator():
         self.pendingPath = "/home/boinc/findah/pending/"
         self.num_thread = 0
         self.pass_modulo = 300
+        self.conn = MySQLdb.connect(host, user, passwd, db)
+        self.conn.autocommit(True)
     
     def check_stop_trigger(self):
         """
@@ -295,6 +297,7 @@ class Assimilator():
                         os.remove("stop_working")
                 database.close()
                 if not workdone:
+                    self.conn.close()
                     time.sleep(self.sleep_interval)
     
     def _writeLog(self, mode, *args):
