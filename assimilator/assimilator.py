@@ -300,7 +300,6 @@ class Assimilator():
                         os.remove("stop_working")
                 database.close()
                 if not workdone:
-                    self.conn.close()
                     time.sleep(self.sleep_interval)
     
     def _writeLog(self, mode, *args):
