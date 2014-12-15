@@ -62,7 +62,6 @@ class Assimilator():
         self.num_thread = 0
         self.pass_modulo = 300
         self.conn = None
-        self.conn.autocommit(True)
     
     def check_stop_trigger(self):
         """
@@ -301,6 +300,7 @@ class Assimilator():
         db = buff[3]
     
         self.conn = MySQLdb.connect(host, user, passwd, db)
+        self.conn.autocommit(True)
         # retrieve app where name = app.name
         database.connect()
         app=database.Apps.find1(name=self.appname)
