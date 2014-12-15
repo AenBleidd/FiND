@@ -167,7 +167,7 @@ class PyAssimilator(Assimilator):
                 assimilated += 1
             did_something = True
             self.logDebug("%d results inserted into database, %d errors\n", assimilated, checked-assimilated)
-            conn.commit()
+            self.conn.commit()
             cursor.close()
         except Exception, e:
             self.logCritical("Error: %s", e)
