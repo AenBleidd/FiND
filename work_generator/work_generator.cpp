@@ -141,10 +141,10 @@ int make_job(struct jobstruct job) {
 		credit = 25;
 	}
 
-	sprintf(additional_xml, "<credit>%f</credit>\n", credit);
+	//sprintf(additional_xml, "<credit>%f</credit>\n", credit);
 
 	sprintf(additional_xml,
-			"<command_line>--ligand ligand --receptor receptor --config conf --rligand %s --rreceptor %s --cpu 1</command_line>",
+			"<credit>%f</credit>\n<command_line>--ligand ligand --receptor receptor --config conf --rligand %s --rreceptor %s --cpu 1</command_line>", credit,
 			job.nameligand, job.namereceptor);
 
 	log_messages.printf(MSG_DEBUG, "Start create_work()\n");
