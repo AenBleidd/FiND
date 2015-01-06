@@ -77,7 +77,7 @@ def do_assimilate(path, uber = False):
         cursor.close()
         conn.close()
     except Exception, e:
-        return "conn = MySQLdb.connect(host, user, passwd, db)", e
+        return "conn = MySQLdb.connect(host, user, passwd, db)", e, sql
         
     # return did something result
     for dfile in toRemove:

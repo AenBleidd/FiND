@@ -1,6 +1,6 @@
-11:22:13 (9240): Can't open init data file - running in standalone mode
+11:38:21 (17241): Can't open init data file - running in standalone mode
 
-Receptor name: pipi
+Seed: 1700771749
 
-Ligand name: popo
-11:22:13 (9240): called boinc_finish(0)
+Score: -6.43693
+11:38:30 (17241): called boinc_finish(0)
