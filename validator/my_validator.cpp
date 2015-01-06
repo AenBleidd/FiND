@@ -39,7 +39,7 @@ int init_result(RESULT & result, void*& data) {
 	retval = get_output_file_path(result, fi.path);
 	if (retval) {
 		log_messages.printf(MSG_CRITICAL, "Unable to open file\n");
-		return retval;
+		return -1;
 	}
 
 	f = fopen(fi.path.c_str(), "r");
