@@ -132,7 +132,7 @@ int make_job(struct jobstruct job) {
 	wu.max_error_results = 1;
 	wu.max_total_results = 5;
 	wu.max_success_results = 1;
-	wu.rsc_disk_bound = 150000;
+	wu.rsc_disk_bound = 150000000;
 	wu.rsc_bandwidth_bound = 0.0;
 
 	int count = Count("between atoms:", job.pdbligand);
