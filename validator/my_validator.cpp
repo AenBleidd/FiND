@@ -94,7 +94,7 @@ int init_result(RESULT & result, void*& data) {
 		return -1;
 	}
 
-	if (dp->score > 50 || dp->score < -50) {
+	if (dp->score > 250 || dp->score < -50) {
 		log_messages.printf(MSG_CRITICAL, "%f %f Score failed\n", dp->seed, dp->score);
 		return -1;
 	}
