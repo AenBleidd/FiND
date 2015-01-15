@@ -136,7 +136,7 @@ int make_job(struct jobstruct job) {
 	wu.rsc_bandwidth_bound = 0.0;
 
 	int count = Count("between atoms:", job.pdbligand);
-	double credit = 1.0 + double(count) * 0.2895;
+	double credit = 5.0 + double(count) * 0.3;
 	if (credit > 25) {
 		credit = 25;
 	}
