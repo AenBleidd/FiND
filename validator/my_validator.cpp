@@ -8,14 +8,11 @@
 #include <iostream>
 #include <unistd.h>
 #include <errno.h>
-#include "boinc/sched_util.h"
 #include "boinc/sched_msgs.h"
-#include "sched/validator.h"
-#include "boinc/validate_util.h"
-#include "sched/validate_util2.h"
-//#include "boinc/backend_lib.h"
-//#include "boinc/error_numbers.h"
-//#include "boinc/boinc_db.h"
+#include "boinc/error_numbers.h"
+#include "boinc/boinc_db.h"
+#include "sched_util.h"
+#include "validate_util.h"
 
 using namespace std;
 
@@ -45,7 +42,9 @@ int init_result(RESULT & result, void*& data) {
 	f = fopen(fi.path.c_str(), "r");
 
 	if (f == NULL) {
-		log_messages.printf(MSG_CRITICAL, "Open error: %s\n errno: %s Waiting...\n", fi.path.c_str(), errno);
+		log_messages.printf(MSG_CRITICAL,
+				"Open error: %s\n errno: %s Waiting...\n", fi.path.c_str(),
+				errno);
 		usleep(1000);
 		log_messages.printf(MSG_CRITICAL, "Try again...\n");
 		f = fopen(fi.path.c_str(), "r");
@@ -90,14 +89,12 @@ int init_result(RESULT & result, void*& data) {
 	log_messages.printf(MSG_DEBUG, "%s %s %f %f\n", dp->receptor, dp->ligand,
 			dp->seed, dp->score);
 	if (strlen(dp->ligand) < 4 || strlen(dp->receptor) < 4) {
-		log_messages.printf(MSG_CRITICAL, "%s %s Name failed\n", dp->receptor, dp->ligand);
+		log_messages.printf(MSG_CRITICAL, "%s %s Name failed\n", dp->receptor,
+				dp->ligand);
 		return -1;
 	}
 
-	if (dp->score > 250 || dp->score < -50) {
-		log_messages.printf(MSG_CRITICAL, "%f %f Score failed\n", dp->seed, dp->score);
-		return -1;
-	}
+	data = (void*) dp;
 
 	fclose(f);
 	return 0;
@@ -105,6 +102,21 @@ int init_result(RESULT & result, void*& data) {
 
 int compare_results(RESULT& r1, void* _data1, RESULT const& r2, void* _data2,
 		bool& match) {
+
+	DATA* data1 = (DATA*) _data1;
+	DATA* data2 = (DATA*) _data2;
+
+	log_messages.printf(MSG_DEBUG, "%s %s %f %f -- %s %s %f %f\n",
+			data1->receptor, data1->ligand, data1->seed, data1->score,
+			data2->receptor, data2->ligand, data2->seed, data2->score);
+
+	if (data1->score > (data2->score + 2) || data1->score < (data2->score - 2)
+			|| data2->score > (data1->score + 2)
+			|| data2->score < (data1->score - 2)) {
+		log_messages.printf(MSG_CRITICAL, "%f %f -- %f %f Score failed\n",
+				data1->seed, data1->score, data2->seed, data2->score);
+		return -1;
+	}
 	return 0;
 }
 
