@@ -133,6 +133,7 @@ class PyAssimilator(Assimilator):
                         except:
                             print rfile + "  " + f.readline()
                             shutil.move(self.path + rfile, self.failedPath + rfile)
+                            continue
                     #idligand = "(SELECT idligands FROM {0}.ligands WHERE name='{1}')".format(db, ligand)
                     #idreceptor = "(SELECT idreceptors FROM {0}.receptors WHERE name='{1}')".format(db, receptor)
                     try:
