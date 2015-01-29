@@ -95,6 +95,10 @@ int init_result(RESULT & result, void*& data) {
 		return -1;
 	}
 
+	if(dp->score < -1000 || dp->score > 1000) {
+		log_messages.printf(MSG_CRITICAL, "%f Score to high\n", dp->score);
+		return -1;
+	}
 	data = (void*) dp;
 
 	fclose(f);
