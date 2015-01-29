@@ -54,9 +54,10 @@ int init_result(RESULT & result, void*& data) {
 	}
 	log_messages.printf(MSG_DEBUG, "Check result\n");
 
-	char* buff;
+	char buff[256];
 	//n = fscanf(f, "%s", buff);
-	buff = fgets(buff, 256, f);
+	fgets(buff, 256, f);
+	log_messages.printf(MSG_DEBUG, "fgets: %s\n", buff);
 	char * pch;
 	pch = strtok(buff, " ,");
 	if (pch != NULL) {
