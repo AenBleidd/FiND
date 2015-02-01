@@ -43,7 +43,7 @@ int init_result(RESULT & result, void*& data) {
 
 	if (f == NULL) {
 		log_messages.printf(MSG_CRITICAL,
-				"Open error: %s\n errno: %s Waiting...\n", fi.path.c_str(),
+				"Open error: %s\n errno: %d Waiting...\n", fi.path.c_str(),
 				errno);
 		usleep(1000);
 		log_messages.printf(MSG_CRITICAL, "Try again...\n");
@@ -55,7 +55,9 @@ int init_result(RESULT & result, void*& data) {
 	log_messages.printf(MSG_DEBUG, "Check result\n");
 
 	char buff[256];
-	n = fscanf(f, "%s", buff);
+	//n = fscanf(f, "%s", buff);
+	fgets(buff, 256, f);
+	log_messages.printf(MSG_DEBUG, "fgets: %s\n", buff);
 	char * pch;
 	pch = strtok(buff, " ,");
 	if (pch != NULL) {
@@ -94,6 +96,10 @@ int init_result(RESULT & result, void*& data) {
 		return -1;
 	}
 
+	if(dp->score < -1000 || dp->score > 1000) {
+		log_messages.printf(MSG_CRITICAL, "%f Score to high\n", dp->score);
+		return -1;
+	}
 	data = (void*) dp;
 
 	fclose(f);
